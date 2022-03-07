@@ -28,12 +28,7 @@ jobs:
       uses: docker://liquibase/liquibase:snowflake
       with:
         args: --changeLogFile=Changelogs/snowflake1.xml checks run
-
-    - name: Running status
-      uses: docker://liquibase/liquibase:snowflake
-      with:
-        args: --changeLogFile=Changelogs/snowflake1.xml --log-level=FINE status --verbose
-        
+      
     - name: Running update
       uses: docker://liquibase/liquibase:snowflake
       with:
