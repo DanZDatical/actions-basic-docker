@@ -13,7 +13,6 @@ env:
     LIQUIBASE_COMMAND_USERNAME: ${{ secrets.LB_USER }}
     LIQUIBASE_COMMAND_PASSWORD: ${{ secrets.LB_PASSWORD }}
 #     LIQUIBASE_COMMAND_CHANGELOG_FILE: ${{ secrets.LIQUIBASE_COMMAND_CHANGELOG_FILE }}
-#    LIQUIBASE_HUB_API_KEY: ${{ secrets.LIQUIBASE_HUB_API_KEY }}
     
 jobs:
 
@@ -27,3 +26,13 @@ jobs:
       uses: docker://liquibase/liquibase:snowflake
       with:
         args: --changeLogFile=Changelogs/snowflake1.xml checks run
+
+    - name: Running status
+      uses: docker://liquibase/liquibase:snowflake
+      with:
+        args: --changeLogFile=Changelogs/snowflake1.xml status --verbose
+        
+    - name: Running update
+      uses: docker://liquibase/liquibase:snowflake
+      with:
+        args: --changeLogFile=Changelogs/snowflake1.xml update
