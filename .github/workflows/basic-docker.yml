@@ -32,7 +32,12 @@ jobs:
       with:
         args: --changeLogFile=Changelogs/snowflake1.xml checks run
       
-    - name: Running update
+    - name: Running QC with classpath
       uses: docker://liquibase/liquibase:4.8.0
       with:
         args: --changeLogFile=Changelogs/snowflake1.xml --classpath=snowflake-jdbc-3.13.9.jar:liquibase-snowflake-4.8.0.jar checks run
+        
+    - name: Running status
+      uses: docker://liquibase/liquibase:4.8.0
+      with:
+        args: --changeLogFile=Changelogs/snowflake1.xml --classpath=snowflake-jdbc-3.13.9.jar:liquibase-snowflake-4.8.0.jar status --verbose
