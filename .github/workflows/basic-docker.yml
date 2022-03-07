@@ -35,4 +35,4 @@ jobs:
     - name: Running update
       uses: docker://liquibase/liquibase:4.8.0
       with:
-        args: --changeLogFile=Changelogs/snowflake1.xml --classpath=snowflake-jdbc-3.13.9.jar;liquibase-snowflake-4.8.0.jar checks run
+        args: --changeLogFile=Changelogs/snowflake1.xml --classpath=snowflake-jdbc-3.13.9.jar:liquibase-snowflake-4.8.0.jar checks run
