@@ -23,11 +23,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - run: |
+        curl -L https://github.com/liquibase/liquibase-snowflake/releases/download/liquibase-snowflake-4.8.0/liquibase-snowflake-4.8.0.jar --output liquibase-snowflake-4.8.0.jar
+        curl -L https://repo1.maven.org/maven2/net/snowflake/snowflake-jdbc/3.13.9/snowflake-jdbc-3.13.9.jar --output snowflake-jdbc-3.13.9.jar
     
     - name: Running Quality Checks
       uses: docker://liquibase/liquibase:snowflake
       with:
-        args: --changeLogFile=Changelogs/snowflake1.xml checks run
+        args: --changeLogFile=Changelogs/snowflake1.xml --classpath=snowflake-jdbc-3.13.9.jar;liquibase-snowflake-4.8.0.jar checks run
       
     - name: Running update
       uses: docker://liquibase/liquibase:snowflake
