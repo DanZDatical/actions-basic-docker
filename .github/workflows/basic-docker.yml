@@ -40,4 +40,4 @@ jobs:
     - name: Running status
       uses: docker://liquibase/liquibase:4.8.0
       with:
-        args: --log-level=DEBUG --changeLogFile=Changelogs/snowflake1.xml --classpath=snowflake-jdbc-3.13.9.jar:liquibase-snowflake-4.8.0.jar status --verbose
+        args: --changeLogFile=Changelogs/snowflake1.xml --classpath=snowflake-jdbc-3.13.9.jar:liquibase-snowflake-4.8.0.jar status --verbose
