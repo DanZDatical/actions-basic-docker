@@ -40,7 +40,7 @@ jobs:
     - name: Running validate withOUT classpath
       uses: docker://liquibase/liquibase:4.8.0
       with:
-        args: --changeLogFile=Changelogs/snowflake1.xml validate
+        args: --classpath=snowflake-jdbc-3.13.9.jar --changeLogFile=Changelogs/snowflake1.xml validate
 
  #   - name: Running status
  #     uses: docker://liquibase/liquibase:4.8.0
